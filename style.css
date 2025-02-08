@@ -1,0 +1,222 @@
+#home-links .home-sub {
+    display: flex;
+    padding: 12px 0;
+    margin: 0;
+  }
+  #home-links .home-sub li {
+    list-style: none;
+    margin: 0 5px;
+  }
+  #home-links .home-sub li a {
+    text-decoration: none;
+    font-size: 13px;
+  }
+  
+  /* -------form-------- */
+  section#main\ my-4{
+    background-color: #ecf1f4;
+    border-color: #d6e1ea;
+    padding:26px 0;
+    margin: 0 12px;
+  }
+  
+  /* ------table---------- */
+  section#our-table-data {
+      margin: 25px 0;
+  }
+  #our-table-data thead th,#subclientTable thead th{
+    background-color: yellow;
+    text-align: center!important;
+    font-weight: 600;
+    vertical-align: middle;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 6.25%;
+    padding: 8px;
+  }
+  #our-table-data .avg-field,#totalRow td,#tableBody td:last-child{
+    font-weight: 900!important;
+  }
+  .table>thead{
+    text-align: center;
+  }
+  table, th, td{
+    border: 1px solid #ddd;
+  }
+  
+  table td hr {
+      margin:0!important; /* Adjust spacing as needed */
+      border: none;   /* Remove default border */
+      border-top: 1px solid #495057!important; /* Add your desired color */
+  }
+  #tableBody td,#totalRow td,#subclientTableBody td{
+    text-align: right;
+    font-weight: 600;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 6.25%;
+    font-size: 14px;
+    padding: 8px;
+  }
+  .count-font{
+    font-size: 12px;
+  }
+  #clientTable {
+      table-layout: auto;
+      max-width: 100%;
+  }
+  #tableBody .client-link{
+       color: #000;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration-line: none;
+      text-align: left;
+  }
+  #tableBody td:first-child{
+    text-align: left;
+  }
+  #subclientTableBody td:first-child{
+    font-size: 14px;
+    font-weight: 700;
+    text-align: left;
+  }
+  /* -----------for subclient----------- */
+  #subtotalRow td{
+    font-size: 14px;
+    font-weight: 700;
+    text-align: right;
+    padding: 8px;
+  }
+  
+  #subtotalRow td:first-child{
+    text-align: left;
+  }
+  #subclientTableBody td:last-child{
+    font-weight: 900;
+  }
+  #subclientTable thead th:last-child{
+    font-weight: 900;
+  }
+  .modal-body{
+    overflow-x: auto;
+  }
+  #subtotalRow .count-font{
+    font-weight: 800;
+  }
+  #totalRow th:first-child{
+    padding: 8px;
+  }
+  #subclientTable{
+    table-layout: auto;
+    max-width: 100%;
+  }
+  /* ---------media query--------- */
+  @media only screen and (max-width: 991px) {
+    select.form-select{
+      margin-bottom:10px;
+    }
+      table.table.table-hover {
+          border-collapse: collapse;
+          width: 100%;
+      }
+      section#our-table-data{
+        overflow-y: auto;
+      }
+  }
+  @media only screen and (min-width:992px) and (max-width: 1440px){
+     .modal-backdrop.show{
+      width: 100%;
+    }
+  }
+  @media only screen and (max-width: 1400px){
+    #tableBody,#subclientTableBody{
+    overflow-x: auto;
+  }
+  }
+  
+  /* --------newly added after api fetching----- */
+  /* -----client name------ */
+  #tableBody .client_name a,#tableBody .client_name{
+    text-decoration: none!important;
+      font-size: 15px;
+      font-weight: 700;
+  }
+  #subtotalRow .total-field{
+    padding: 8px;
+  }
+  #totalRow td:first-child{
+    text-align: left;
+  }
+  #clientTable .main-tr{
+    position: sticky;
+    top: -1px;
+    z-index: 1;
+  }
+  /* #totalRow,#subtotalRow{
+    background-color: #000000c2;
+    color: #fff ;
+  } */
+  #tableBody tr:hover,#subclientTableBody tr:hover{
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px)
+  }
+  .modal-content{
+    max-height: 550px;
+    height: auto!important;
+  }
+  #subclientTable thead{
+    position: sticky;
+    z-index: 1;
+    top: -20px;
+  }
+  .modal-fullscreen{
+    width: 100%;
+    padding-top: 30px;
+  }
+  .total-field{
+    font-size: 15px!important;
+  }
+  /* ------loader----- */
+  .loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+  }
+  
+  .loading-text {
+    margin-top: 16px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #3498db;
+    text-align: center;
+    display: block;
+  }
+  
+  @keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+  }
+  
+  

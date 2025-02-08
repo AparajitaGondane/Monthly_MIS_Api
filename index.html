@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MIS</title>
+    <link rel="stylesheet" href="assets/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/fontawesome/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!--loader  -->
+<div id="loader" class="loader">
+    <div class="spinner"></div>
+    <p class="loading-text">Loading, please wait...</p>
+</div>
+
+<section id="home-links">
+    <div class="container">
+        <div class="links-home">
+            <ul class="home-sub">
+                <li><i class="fa-solid fa-house-chimney"></i> <a href="#"> Home </a> <span><i class="fas fa-angle-right"></i></span></li>
+                <li> <a href="#">Monthly MIS</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section id="main" class="my-4">
+    <div class="container">
+        <div class="outer-bg">
+            <div class="row">
+                <div class="col-lg-4">
+                    <select id="filterSelect" class="form-select" aria-label="Default select example">
+                        <option value="1">All</option>
+                        <option value="2">Non Zero Value</option>
+                        <option value="3">Zero Value</option>
+                    </select>
+                </div>
+
+                <div class="col-lg-4">
+                    <select id="valueSelect" class="form-select" aria-label="Default select example">
+                        <option value="1">Value</option>
+                        <option value="2">Count</option>
+                        <option value="3">Value + Count</option>
+                    </select>
+                </div>
+
+                <div class="col-lg-4">
+                    <button id="searchButton" class="btn btn-primary">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <span class="submit-btn">Search</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="our-table-data">
+    <div class="full-container" style="margin: 0 10px;">
+        <table class="table-responsive table-hover" id="clientTable">
+            <thead>
+                <tr id="tableHeaders">
+                        <script>
+                         // Initialize month names
+                        const monthNames = [
+                            'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+                        ];
+
+                        const currentMonthIndex = new Date().getMonth(); // Get current month index
+                        const orderedMonths = [];
+                        // Create the order starting from the current month
+                        for (let i = 1; i < 13; i++) {
+                            const monthIndex = (currentMonthIndex - i + 12) % 12; // Wrap around using modulo
+                            orderedMonths.push(monthNames[monthIndex]);
+                        }
+              // Create the header row
+                const headerRow = `
+                    <tr class="main-tr">
+                        <th scope="col" id="our-clients">Client Name</th>
+                        <th scope="col" id="our-mtd">MTD</th>
+                        <th scope="col" id="our-lmtd">LMTD</th>
+                        ${orderedMonths.map(month => `<th scope="col">${month}</th>`).join('')}
+                        <th scope="col" id="our-avg" class="avg-field">Avg</th>
+                    </tr>
+                `;
+
+                // Insert the header row into the table
+                document.querySelector('#clientTable thead').innerHTML = headerRow;
+            </script>
+            
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <!-- Rows will be dynamically added here -->
+            </tbody>
+            <tfoot>
+                <tr id="totalRow">
+                    <th scope="row" class="total-field">Total</th>
+                    <!-- The columns will be filled by JavaScript -->
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</section>
+
+<!-- Modal for Client Details -->
+<div class="modal" id="clientModal" tabindex="-1" aria-labelledby="clientModalLabel" aria-hidden="true">
+   
+    <div class="modal-dialog modal-fullscreen">
+         <div class="container">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="clientModalLabel">Sub-Client Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <table class="table-reponsive table-hover" id="subclientTable">
+                    <thead>
+                        <script>
+                         // Initialize month names
+                        const submonthNames = [
+                            'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+                        ];
+
+                        const subcurrentMonthIndex = new Date().getMonth(); // Get current month index
+                        const suborderedMonths = [];
+                        // Create the order starting from the current month
+                        for (let i = 1; i < 13; i++) {
+                            const submonthIndex = (subcurrentMonthIndex - i + 12) % 12; // Wrap around using modulo
+                            suborderedMonths.push(submonthNames[submonthIndex]);
+                        }
+              // Create the header row
+                const subheaderRow = `
+                    <tr class="main-sub">
+                        <th scope="col" id="our-clients">Client Name</th>
+                        <th scope="col" id="our-mtd">MTD</th>
+                        <th scope="col" id="our-lmtd">LMTD</th>
+                        ${suborderedMonths.map(month => `<th scope="col">${month}</th>`).join('')}
+                        <th scope="col" id="our-avg" class="avg-field">Avg</th>
+                    </tr>
+                `;
+
+                // Insert the header row into the table
+                document.querySelector('#subclientTable thead').innerHTML = subheaderRow;
+            </script>
+
+                    </thead>
+                    <tbody id="subclientTableBody">
+                        <!-- Subclient rows will be dynamically added here -->
+                    </tbody>
+                    <tfoot>
+                      <tr id="subtotalRow">
+                    <th scope="row" class="total-field">Total</th>
+                    <!-- The columns will be filled by JavaScript -->
+                </tr>
+            </tfoot>
+                </table>
+            </div>
+        </div>
+        </div>
+    </div>
+    
+    </div>
+
+<script type="text/javascript" src="assets/bootstrap/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/brands.min.js"></script>
+<script src="script.js"></script> 
+</body>
+</html>
